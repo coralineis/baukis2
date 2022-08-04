@@ -21,15 +21,5 @@ describe Admin::Authenticator do
       m = build(:administrator, suspended: true)
       expect(Admin::Authenticator.new(m).authenticate("pw")).to be_truthy
     end
-
-    example "開始前ならfalseを返す" do
-      m = build(:administrator, start_date: Date.tomorrow)
-      expect(Admin::Authenticator.new(m).authenticate("pw")).to be_falsey
-    end
-
-    example "終了後ならfalseを返す" do
-      m = build(:administrator, end_date: Date.today)
-      expect(Admin::Authenticator.new(m).authenticate("pw")).to be_falsey
-    end
   end
 end
