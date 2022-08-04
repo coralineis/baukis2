@@ -23,3 +23,4 @@ describe Admin::Authenticator do
     end
   end
 end
+
