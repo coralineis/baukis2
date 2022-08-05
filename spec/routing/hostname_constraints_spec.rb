@@ -16,7 +16,7 @@ describe "ルーティング" do
     url = "http://#{config[:admin][:host]}/#{config[:admin][:path]}/login"
     expect(get: url).to route_to(
       host: config[:admin][:host],
-      controller: "admin/session",
+      controller: "admin/sessions",
       action: "new"
     )
   end
@@ -26,8 +26,8 @@ describe "ルーティング" do
     url = "http://#{config[:customer][:host]}/#{config[:customer][:path]}"
     expect(get: url).to route_to(
       host: config[:customer][:host],
-      controller: "customer/top"
-      adtion: "index"
+      controller: "customer/top",
+      action: "index"
     )  
   end
 
