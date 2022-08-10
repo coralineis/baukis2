@@ -8,6 +8,6 @@ FactoryBot.define do
     password { "pw" }
     start_date { Date.yesterday }
     end_date { nil }
-    supended { false }
+    suspended { false }
   end
 end
