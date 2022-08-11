@@ -1,4 +1,6 @@
 class Admin::StaffMembersController < Admin::Base
+  before_action :authorize
+
   def index 
     @staff_members = StaffMember.order(:family_name_kana, :given_name_kana)
   end
@@ -45,6 +47,13 @@ class Admin::StaffMembersController < Admin::Base
   end
 
   private
+
+  def authorize
+    unless current_administrator
+      flash.alert = "管理者としてログインしてください。"
+      redirect_to :admin_login
+    end
+  end
 
   def staff_member_params
     params.require(:staff_member).permit(
