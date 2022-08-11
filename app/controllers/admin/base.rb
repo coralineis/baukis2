@@ -1,5 +1,14 @@
 class Admin::Base < ApplicationController
+  before_action :authorize
+
   private
+
+  def authorize
+    unless current_administrator
+      flash.alert = "管理者としてログインしてください。"
+      redirect_to :admin_login
+    end
+  end
   
   def current_administrator
     if session[:administrator_id]
